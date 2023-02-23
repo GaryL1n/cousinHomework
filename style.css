@@ -169,75 +169,78 @@ footer {
 }
 
 /* ================輪播強================ */
-.wrap {
+.slider-wrapper {
     width: 100%;
-    height: 85%;
-    overflow: hidden;
-    /* border: 2px solid red; */
+    height: 100%;
     position: relative;
+    overflow: hidden;
 }
 
-ul.train {
-    width: 300%;
-    height: 100%;
-    padding: 0;
+.slider {
     display: flex;
-    transform: translateX(-0px);
-    transition: 0.5s ease;
-}
-
-.trainMove {
-    animation: trainMove 10s ease-in-out infinite;
-}
-
-@keyframes trainMove {
-    0% {
-        transform: translateX(-0px);
-    }
-    33% {
-        transform: translateX(-33.33%);
-    }
-    66% {
-        transform: translateX(-66.66%);
-    }
-    100% {
-        transform: translateX(-0px);
-    }
-  }
-
-.train li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     height: 100%;
+    width: 300%;
+    transition: transform 0.5s ease;
+}
+
+.slider li {
+    width: 33.33%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
     flex-basis: 0;
     flex-grow: 1;
-    /* border: 2px solid blue; */
 }
 
-.train li img {
-    width: 100%;
-    height: 100%;
+.slider img {
     object-fit: contain;
 }
 
-.slider-dots-area {
-    list-style: none;
-    padding: 0;
-    /* margin: 0; */
-    width: 100%;
+.slider-wrapper p {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: black;
+    font-size: 30px;
+    user-select: none;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+.slider-dots {
     display: flex;
     justify-content: center;
     position: absolute;
     bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
 }
 
-.slider-dots-area li {
-    width: 40px;
+.slider-dots li {
+    width: 10px;
     height: 10px;
-    border: 1px solid #fff;
     margin: 0 5px;
+    border-radius: 50%;
+    background-color: white;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.5s ease;
 }
 
-.slider-dots-area li:nth-child(1) {
-    background: #fff;
+.slider-dots li.active {
+    opacity: 1;
 }
 /* ================輪播強================ */
 @media (min-width: 640px) {
@@ -256,4 +259,7 @@ ul.train {
     .container {
         max-width: 1200px;
     }
+    /* .slider img {
+        object-fit: cover;
+    } */
 }
